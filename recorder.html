@@ -11,6 +11,7 @@
       --text-muted: #a6adc8;
       --accent-green: #a6e3a1;
       --accent-red: #f38ba8;
+      --accent-yellow: #f9e2af; /* Цвет для паузы */
       --accent-blue: #89b4fa;
     }
 
@@ -91,6 +92,19 @@
       color: var(--accent-red);
     }
 
+    /* Стиль для ПАУЗЫ */
+    .paused {
+      border: 1px solid rgba(249, 226, 175, 0.3);
+    }
+    .paused .status-dot {
+      background-color: var(--accent-yellow);
+      box-shadow: 0 0 5px var(--accent-yellow);
+      animation: none; /* Без пульсации */
+    }
+    .paused .status-text {
+      color: var(--accent-yellow);
+    }
+
     @keyframes pulse {
       0% { transform: scale(0.95); opacity: 0.7; }
       50% { transform: scale(1.1); opacity: 1; }
@@ -132,18 +146,22 @@
       box-shadow: 0 4px 15px rgba(166, 227, 161, 0.3);
     }
     
-    #startBtn:hover {
-      filter: brightness(1.1);
-    }
-
     #stopBtn {
       background: linear-gradient(135deg, #f38ba8 0%, #fab387 100%);
       color: #1e1e2e;
-      display: none; /* Скрыто по умолчанию */
+      display: none;
       box-shadow: 0 4px 15px rgba(243, 139, 168, 0.3);
     }
 
-    #stopBtn:hover {
+    /* Новая кнопка Паузы */
+    #pauseBtn {
+      background: linear-gradient(135deg, #f9e2af 0%, #fab387 100%);
+      color: #1e1e2e;
+      display: none;
+      box-shadow: 0 4px 15px rgba(249, 226, 175, 0.3);
+    }
+
+    button:hover {
       filter: brightness(1.1);
     }
 
@@ -171,6 +189,7 @@
     <div class="timer" id="timer">00:00:00</div>
     
     <button id="startBtn">Start</button>
+    <button id="pauseBtn">Pause</button> <!-- Кнопка Паузы -->
     <button id="stopBtn">Stop</button>
     
     <div class="info" id="uiInfo">
