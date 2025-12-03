@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 240px;
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #1e1e2e; /* Темный фон */
+      color: #cdd6f4;
+      text-align: center;
+    }
+
+    h3 {
+      margin-top: 0;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #89b4fa 0%, #74c7ec 100%);
+      color: #1e1e2e;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 15px rgba(116, 199, 236, 0.3);
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(116, 199, 236, 0.5);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <span class="icon">🎥</span>
+  <!-- Добавлен id="appTitle", чтобы JS мог менять язык -->
+  <h3 id="appTitle">Screen Recorder</h3>
+  
+  <!-- id="openRecorder" уже был, он нужен для JS -->
+  <button id="openRecorder">Open Recorder</button>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

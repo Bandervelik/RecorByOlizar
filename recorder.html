@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Recording Controller</title>
+  <style>
+    :root {
+      --bg-color: #1e1e2e;
+      --card-bg: #313244;
+      --text-main: #cdd6f4;
+      --text-muted: #a6adc8;
+      --accent-green: #a6e3a1;
+      --accent-red: #f38ba8;
+      --accent-blue: #89b4fa;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+      padding: 0;
+      margin: 0;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      border: 1px solid #45475a;
+    }
+
+    h2 {
+      margin: 0 0 20px 0;
+      font-size: 20px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #fff;
+    }
+
+    /* Статус с индикатором */
+    .status-container {
+      background: #181825;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      background-color: #585b70;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .status-text {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    /* Анимация записи (класс добавляется через JS) */
+    .recording {
+      border: 1px solid rgba(243, 139, 168, 0.3);
+    }
+
+    .recording .status-dot {
+      background-color: var(--accent-red);
+      box-shadow: 0 0 10px var(--accent-red);
+      animation: pulse 1.5s infinite;
+    }
+    
+    .recording .status-text {
+      color: var(--accent-red);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.7; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.7; }
+    }
+
+    /* Таймер */
+    .timer {
+      font-family: 'Courier New', monospace;
+      font-size: 48px;
+      color: var(--text-main);
+      margin: 20px 0;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-shadow: 0 0 20px rgba(205, 214, 244, 0.1);
+    }
+
+    /* Кнопки */
+    button {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      margin: 10px 0;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      transition: transform 0.2s, filter 0.2s;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    #startBtn {
+      background: linear-gradient(135deg, #a6e3a1 0%, #94e2d5 100%);
+      color: #1e1e2e;
+      box-shadow: 0 4px 15px rgba(166, 227, 161, 0.3);
+    }
+    
+    #startBtn:hover {
+      filter: brightness(1.1);
+    }
+
+    #stopBtn {
+      background: linear-gradient(135deg, #f38ba8 0%, #fab387 100%);
+      color: #1e1e2e;
+      display: none; /* Скрыто по умолчанию */
+      box-shadow: 0 4px 15px rgba(243, 139, 168, 0.3);
+    }
+
+    #stopBtn:hover {
+      filter: brightness(1.1);
+    }
+
+    /* Инфо текст */
+    .info {
+      font-size: 13px;
+      color: #6c7086;
+      margin-top: 20px;
+      line-height: 1.5;
+      padding: 10px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 id="uiTitle">📹 Stream Recorder</h2>
+    
+    <div class="status-container" id="statusContainer">
+      <div class="status-dot" id="statusDot"></div>
+      <div class="status-text" id="status">...</div>
+    </div>
+
+    <div class="timer" id="timer">00:00:00</div>
+    
+    <button id="startBtn">Start</button>
+    <button id="stopBtn">Stop</button>
+    
+    <div class="info" id="uiInfo">
+      ...
+    </div>
+  </div>
+
+  <script src="recorder.js"></script>
+</body>
+</html>
